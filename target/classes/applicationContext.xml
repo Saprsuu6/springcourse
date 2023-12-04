@@ -7,14 +7,35 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties" />
 
-    <bean id="musicBean"
-        class="com.example.springcourse.RockMusic">
-    </bean>
+    <bean id="musicBeanRock"
+        class="com.example.springcourse.models.Rock"/>
+
+    <bean id="musicBeanAmbient"
+        class="com.example.springcourse.models.Ambient"/>
+
+    <bean id="musicBeanAlternative"
+        class="com.example.springcourse.models.Alternative"/>
+
+    <bean id="musicBeanClassical"
+        class="com.example.springcourse.models.Classical"/>
+
+    <bean id="musicBeanJazz"
+        class="com.example.springcourse.models.Jazz"/>
 
     <bean id="musicPlayerBean"
-        class="com.example.springcourse.MusicPlayer">
+        class="com.example.springcourse.controllers.MusicPlayer">
         <!-- <constructor-arg ref="musicBean" /> if we need to inject from constructor -->
-        <property name="music" ref="musicBean"/>
+        <property name="music" ref="musicBeanRock"/>
+
+        <constructor-arg>
+            <list>
+                <ref bean="musicBeanRock"/>
+                <ref bean="musicBeanAmbient"/>
+                <ref bean="musicBeanAlternative"/>
+                <ref bean="musicBeanClassical"/>
+                <ref bean="musicBeanJazz"/>
+            </list>
+        </constructor-arg>
 
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>

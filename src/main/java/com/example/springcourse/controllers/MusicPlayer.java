@@ -1,10 +1,15 @@
-package com.example.springcourse;
+package com.example.springcourse.controllers;
+
+import java.util.List;
+
+import com.example.springcourse.interfaces.Music;
 
 public class MusicPlayer {
     private Music music;
 
     private String name;
     private int volume;
+    private List<Music> musicList;
 
     // #region getters
     public String getName() {
@@ -17,6 +22,10 @@ public class MusicPlayer {
 
     public Music getMusic() {
         return music;
+    }
+
+    public List<Music> getMusicList() {
+        return musicList;
     }
     // #endregion
 
@@ -33,6 +42,10 @@ public class MusicPlayer {
         this.music = music;
     }
     // #endregion
+
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+    }
 
     public MusicPlayer(Music music) {
         this.music = music;

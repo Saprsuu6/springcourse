@@ -1,4 +1,4 @@
-package com.example.springcourse;
+package com.example.springcourse.interfaces;
 
 public interface Music {
     String getSong();

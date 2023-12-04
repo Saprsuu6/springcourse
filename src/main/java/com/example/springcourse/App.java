@@ -1,8 +1,9 @@
 package com.example.springcourse;
 
-import javax.sound.midi.SysexMessage;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.example.springcourse.controllers.MusicPlayer;
+import com.example.springcourse.interfaces.Music;
 
 public class App {
     /**
@@ -11,10 +12,6 @@ public class App {
      */
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");) {
-            // #region Add first level bean from constructor
-            firstLevelBean(context);
-            // #endregion
-
             // #region Add second level bean from
             secondLevelBean(context);
             // #endregion
@@ -22,14 +19,13 @@ public class App {
             // #region Add second level bean from props using props file
             injectionFromPropUsingProp(context);
             // #endregion
+
+            // #region Add list of beansform construcor
+            injectionBeansListUsingConstructor(context);
+            // #endregion
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private static void firstLevelBean(ClassPathXmlApplicationContext context) {
-        Music music = context.getBean("musicBean", Music.class);
-        new MusicPlayer(music).play();
     }
 
     private static void secondLevelBean(ClassPathXmlApplicationContext context) {
@@ -42,5 +38,12 @@ public class App {
         player.play();
         System.out.println(player.getName());
         System.out.println(player.getVolume());
+    }
+
+    private static void injectionBeansListUsingConstructor(ClassPathXmlApplicationContext context) {
+        MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
+        for (Music music : player.getMusicList()) {
+            System.out.println(music.getSong());
+        }
     }
 }
