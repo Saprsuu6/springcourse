@@ -13,15 +13,23 @@ public class App {
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");) {
             // #region Add second level bean from
-            secondLevelBean(context);
+            // secondLevelBean(context);
             // #endregion
 
             // #region Add second level bean from props using props file
-            injectionFromPropUsingProp(context);
+            // injectionFromPropUsingProp(context);
             // #endregion
 
             // #region Add list of beansform construcor
-            injectionBeansListUsingConstructor(context);
+            // injectionBeansListUsingConstructor(context);
+            // #endregion
+
+            // #region compare singleton and prototype bean
+            // singletonPrototype(context);
+            // #endregion
+
+            // #region init and destroy
+            initDestroy(context);
             // #endregion
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -45,5 +53,16 @@ public class App {
         for (Music music : player.getMusicList()) {
             System.out.println(music.getSong());
         }
+    }
+
+    private static void singletonPrototype(ClassPathXmlApplicationContext context) {
+        MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
+        MusicPlayer player2 = context.getBean("musicPlayerBean", MusicPlayer.class);
+        System.out.println(player);
+        System.out.println(player2);
+    }
+
+    private static void initDestroy(ClassPathXmlApplicationContext context) {
+        MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
     }
 }

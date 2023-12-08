@@ -23,6 +23,9 @@
         class="com.example.springcourse.models.Jazz"/>
 
     <bean id="musicPlayerBean"
+        scope="prototype"
+        init-method="init"
+        destroy-method="destroy"
         class="com.example.springcourse.controllers.MusicPlayer">
         <!-- <constructor-arg ref="musicBean" /> if we need to inject from constructor -->
         <property name="music" ref="musicBeanRock"/>

@@ -43,6 +43,19 @@ public class MusicPlayer {
     }
     // #endregion
 
+    public void init() {
+        System.out.println("init");
+    }
+
+    public void destroy() {
+        System.out.println("destroy");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     public MusicPlayer(List<Music> musicList) {
         this.musicList = musicList;
     }
