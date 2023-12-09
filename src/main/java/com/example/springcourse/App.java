@@ -8,7 +8,7 @@ import com.example.springcourse.interfaces.Music;
 public class App {
     /**
      * There is 3 way to set bean
-     * 1. From XML file
+     * From XML file
      */
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");) {
