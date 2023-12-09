@@ -13,19 +13,19 @@ public class App {
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");) {
             // #region Add second level bean from
-            // secondLevelBean(context);
+            secondLevelBean(context);
             // #endregion
 
             // #region Add second level bean from props using props file
-            // injectionFromPropUsingProp(context);
+            injectionFromPropUsingProp(context);
             // #endregion
 
             // #region Add list of beansform construcor
-            // injectionBeansListUsingConstructor(context);
+            injectionBeansListUsingConstructor(context);
             // #endregion
 
             // #region compare singleton and prototype bean
-            // singletonPrototype(context);
+            singletonPrototype(context);
             // #endregion
 
             // #region init and destroy

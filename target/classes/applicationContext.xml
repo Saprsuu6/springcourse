@@ -22,6 +22,9 @@
     <bean id="musicBeanJazz"
         class="com.example.springcourse.models.Jazz"/>
 
+    <!-- There is to types of beans, it's SINGLETONE and PARTIAL. SINGLETONE always sing in one obj. PARTIAL has always different objects -->
+    <!-- main parts of bean lifecycle is INIT and DESTROY. If bean is partial? destroy wouldn't work -->
+
     <bean id="musicPlayerBean"
         scope="prototype"
         init-method="init"
