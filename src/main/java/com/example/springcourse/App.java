@@ -64,5 +64,6 @@ public class App {
 
     private static void initDestroy(ClassPathXmlApplicationContext context) {
         MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
+        System.out.println(player);
     }
 }
